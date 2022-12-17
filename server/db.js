@@ -6,9 +6,10 @@ module.exports = async () => {
             useNewUrlParser: true,
             useCreateIndex: true,
             useUnifiedTopology: true,
+            
         };
         await mongoose.connect(
-            "mongodb://localhost/todo-app",
+            "mongodb://db:27017/todo-app",
             connectionParams
         );
         console.log("Connected to database.");

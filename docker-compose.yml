@@ -1,0 +1,27 @@
+version: "3"
+services:
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+  api:
+    image: "ayoub12022001/todo-server"
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+  client:
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    image: "ayoub12022001/todo-client"
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+volumes:
+  mongodb:
+
